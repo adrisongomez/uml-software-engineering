@@ -1,0 +1,27 @@
+@startuml "Iniciar session con usuario y contraseña"
+start
+
+:Usuario provee email y contraseña;
+
+:Verificar credenciales en `usuarios_credentials` y registrar cantidad de intentos;
+
+repeat
+    if (Credenciales válidas?) then (Sí)
+        :Registrar nueva sesión en `user_sessions` y generar token;
+        :Resetea el contador de intentos;
+        :Usuario se logea en el sistema y recibe un token de sesión;
+        break
+    else (No)
+        :Mostrar que usuario y contraseña no son válidos;
+        :Registrar intento fallido;
+        if (Más de 10 intentos fallidos?) then (Sí)
+            :Bloquear cuenta;
+            stop
+        else (No)
+            :Volver a ingresar email y contraseña;
+        endif
+    endif
+repeat while (Credenciales no válidas? y menos de 10 intentos)
+
+stop
+@enduml

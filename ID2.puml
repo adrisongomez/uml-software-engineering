@@ -1,0 +1,19 @@
+@startuml "Crear usuario con OpenID"
+start
+
+:Usuario se logea con su cuenta de tercero;
+
+:Servicio de tercero provee Nombre y Email;
+
+repeat
+    if (Nombre proporcionado?) then (Sí)
+        :Usuario registra número de teléfono y dirección física;
+        :Crear usuario y marcar como 'VERIFYING';
+        break
+    else (No)
+        :Usuario registra el nombre;
+    endif
+repeat while (Nombre no proporcionado?)
+
+stop
+@enduml

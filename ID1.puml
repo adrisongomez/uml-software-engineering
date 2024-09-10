@@ -1,0 +1,32 @@
+@startuml "ID1: Crear cuenta de usario con email y contraseña"
+start
+
+:Usuario registra email, contraseña, 
+Nombre, Dirección, Teléfono, DNI/ID;
+
+:Usuario llena captcha para verificación;
+
+repeat
+    :Comprobar la validez de los datos;
+
+    if (Datos válidos?) then (Sí)
+        :Comprobar que el email no existe en la base de datos;
+        if (Email no existe?) then (Sí)
+            :Crear nuevo usuario en la base de datos;
+            :Marcar usuario como 'VERIFYING';
+            break
+        else (No)
+            :Mostrar que el email ya está registrado;
+            :Usuario ingresa otro correo;
+            :Volver a comprobar que el email no existe;
+        endif
+    else (No)
+        :Mostrar que los datos no son correctos;
+        :Indicar cuáles son incorrectos;
+        :Usuario ingresa datos correctos;
+        :Volver a comprobar la validez de los datos;
+    endif
+repeat while (Datos válidos? y Email no existe?)
+
+stop
+@enduml

@@ -1,0 +1,29 @@
+@startuml "Validar cuenta de usuario"
+start
+
+:Enviar SMS/Email de verificación con OTP;
+
+:Usuario ingresa el OTP;
+
+if (OTP es válido?) then (Sí)
+    :Usuario marcado como 'VERIFYING_IDENTITY';
+    :Usuario sube foto de dirección física e identificación;
+    
+    :Verificar datos de identidad física;
+
+    if (Datos válidos?) then (Sí)
+        :Usuario marcado como 'SUCCESS';
+    else (No)
+        :Indicar al usuario que los datos no son válidos;
+        :Mostrar datos incorrectos al usuario;
+        :Usuario sube fotos/archivos correctos;
+        :Verificar archivos nuevamente;
+    endif
+else (No)
+    :Indicar al usuario que debe enviar un nuevo OTP;
+    :Verificar número de teléfono o email;
+    :Solicitar nuevo OTP al número/correo actualizado;
+endif
+
+stop
+@enduml
