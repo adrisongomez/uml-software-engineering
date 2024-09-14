@@ -1,0 +1,26 @@
+@startuml "Comprar criptomonedas"
+start
+
+:Mostrar al usuario todas las criptomonedas disponibles;
+
+:El usuario elige la criptomoneda y la cantidad;
+
+:Verificar si el usuario tiene saldo disponible;
+
+if (Saldo disponible?) then (Sí)
+    :Mostrar pantalla de transacción exitosa;
+    :Actualizar saldo de criptomonedas en la cartera;
+    :Registrar transacción en el historial;
+else (No)
+    :Mostrar que la transacción no ha sido satisfactoria;
+    :Registrar transacción fallida en el historial;
+endif
+
+if (Pago con verificación?) then (Sí)
+    :Redirigir al usuario a la pantalla de verificación de PayPal;
+    :Esperar validación de la transacción;
+    :Mostrar resultado de la validación;
+endif
+
+stop
+@enduml

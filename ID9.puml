@@ -1,0 +1,20 @@
+@startuml "Compra automatizada"
+start 
+
+:El `task_scheduler` lee la transacción programada desde la tabla 'schedule_transaction';
+
+:Calcular el valor en USD de la compra o venta programada;
+
+:Realizar la transacción;
+
+if (Transacción exitosa?) then (Sí)
+    :Notificar al usuario que la compra o venta automatizada fue realizada;
+    :Actualizar el historial de transacciones;
+else (No)
+    :Notificar al usuario que la transacción falló;
+    :Solicitar al usuario atender el error;
+    :Reintentar la transacción después de 24 horas;
+endif
+
+stop
+@enduml

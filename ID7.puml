@@ -1,0 +1,25 @@
+@startuml "Venta de criptomoneda"
+start
+
+:Mostrar todas las criptomonedas en la cartera del usuario;
+
+:El usuario elige qué criptomoneda vender y la cantidad;
+
+:Verificar si el usuario tiene la cantidad disponible;
+
+if (Cantidad disponible?) then (Sí)
+    :Calcular y mostrar el valor a vender y la tasa de cambio;
+    :Solicitar confirmación del usuario;
+    if (Usuario confirma?) then (Sí)
+        :Realizar la transacción;
+        :Registrar transacción en el historial;
+        :Actualizar el saldo de criptomonedas en la cartera;
+    else (No)
+        :Mostrar error y cancelar transacción;
+    endif
+else (No)
+    :Mostrar error de cantidad insuficiente;
+endif
+
+stop
+@enduml

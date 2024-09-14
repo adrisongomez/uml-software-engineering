@@ -1,0 +1,25 @@
+@startuml "Uso de chat publico"
+start
+
+:Usuario es autentificado;
+
+if (¿Usuario verificado?) then (Sí)
+    :Usuario escribe mensaje o pega imagen en el cuadro de texto;
+    :Usuario presiona enviar o enter;
+
+    while (¿Mensaje cumple con los requisitos para posteo?) is (No)
+        :Mostrar advertencia: "Mensaje no cumple con las políticas";
+        if (¿5 intentos consecutivos de enviar el mismo mensaje?) then (Sí)
+            :Bloquear usuario del chat;
+            stop
+        endif
+    endwhile (Sí)
+
+    :El sistema postea el mensaje en el chat público;
+    :Mensaje disponible para ser visualizado por otros usuarios;
+else (No)
+    :Usuario solo puede observar el chat;
+endif
+
+stop
+@enduml

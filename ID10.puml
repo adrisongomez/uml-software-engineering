@@ -1,0 +1,18 @@
+@startuml "Creación de menú de Cuenta de saldo para Realizar Trasferencias con moneda base"
+start
+
+:El usuario digita la cantidad de saldo a transferir;
+
+:El sistema muestra el saldo disponible;
+
+if (¿Usuario tiene saldo suficiente?) then (Sí)
+    :Permitir realizar la compra de criptomonedas con saldo disponible;
+    :Mostrar opciones de pago (PayPal, tarjeta de crédito, transferencia bancaria SWIFT);
+    :Usuario selecciona el método de pago y confirma;
+else (No)
+    :Mostrar mensaje de error: "No tiene saldo suficiente";
+endif
+
+:Finalizar transacción;
+stop
+@enduml

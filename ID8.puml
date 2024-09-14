@@ -1,0 +1,21 @@
+@startuml "Compras y ventas automatica"
+start
+
+:El usuario selecciona frecuencia de compra, cantidad y método de pago;
+
+:Mostrar gráfico o tabla de la inversión proyectada al tiempo establecido;
+
+:Solicitar confirmación de los datos;
+
+if (Usuario confirma?) then (Sí)
+    :Registrar la compra o venta automática en la tabla 'schedule_transactions';
+    :Notificar al usuario que su compra o venta automática está registrada;
+else (No)
+    :Cancelar la transacción;
+    :Mostrar error o mensaje de cancelación;
+endif
+
+:Notificar al usuario sobre el pago automático;
+
+stop
+@enduml

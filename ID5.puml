@@ -1,0 +1,16 @@
+@startuml "Iniciar session con OpenID"
+start
+
+:Usuario se logea con su cuenta de tercero;
+
+:Verificar credenciales en la tabla de `user_credentials`;
+
+if (Usuario registrado?) then (Sí)
+    :Registrar nueva sesión en `user_sessions` y generar token;
+    :Usuario se logea en el sistema y recibe un token de sesión;
+else (No)
+    :Mostrar error "Usuario no está registrado";
+endif
+
+stop
+@enduml
